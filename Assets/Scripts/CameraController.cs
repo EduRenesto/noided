@@ -8,15 +8,15 @@ public class CameraController : MonoBehaviour
 
     private Vector3 m_offset;
 
-    void Start()
+    public void Start()
     {
         // O = T - C;
         // C = T - O
         this.m_offset = m_playerTransform.position - this.transform.position;
     }
 
-    void Update()
+    public void Update()
     {
-        this.transform.position = m_playerTransform.position - this.m_offset;
+            this.transform.position = m_playerTransform.position - this.m_offset;
     }
 }
