@@ -12,11 +12,13 @@ enum DimChangerState {
 
 public class DimensionChanger : MonoBehaviour
 {
-    public int m_maxDim;
-    public int m_minDim;
+    public int m_maxDim = 0;
+    public int m_minDim = 0;
 
     public Vector3 m_stride = new Vector3(0.0f, 0.0f, 10.0f);
     public float m_translationSpeed = 100.0f;
+
+    public float m_epsilon = 0.001f;
 
     public TextMeshProUGUI m_dimText;
 
@@ -25,7 +27,7 @@ public class DimensionChanger : MonoBehaviour
     private int m_dimNumber = 0;
 
     public void Start() {
-        this.m_dimText.text = "dim: " + m_dimNumber;
+        this.UpdateDimensionText();
     }
 
     public void Update()
@@ -41,32 +43,36 @@ public class DimensionChanger : MonoBehaviour
 
                 StartCoroutine(MoveTo(this.transform.position + direction * m_stride, m_translationSpeed));
 
-                this.m_dimText.text = "dim: " + m_dimNumber;
+                this.UpdateDimensionText();
             }
         }
     }
 
     public void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("DimTrigger+")) {
+        if (other.CompareTag(GameTags.DIM_TRIGGER_PLUS)) {
             this.m_state = DimChangerState.PLUS;
-        } else if(other.CompareTag("DimTrigger-")) {
+        } else if(other.CompareTag(GameTags.DIM_TRIGGER_MINUS)) {
             this.m_state = DimChangerState.MINUS;
         }
     }
 
     public void OnTriggerExit(Collider other) {
-        if (other.CompareTag("DimTrigger+") || other.CompareTag("DimTrigger-")) {
+        if (other.CompareTag(GameTags.DIM_TRIGGER_PLUS) || other.CompareTag(GameTags.DIM_TRIGGER_MINUS)) {
             this.m_state = DimChangerState.INACTIVE;
         } 
     }
 
     private IEnumerator MoveTo(Vector3 to, float speed) {
-        while (Vector3.Distance(this.transform.position, to) >= 0.001f) {
+        while (Vector3.Distance(this.transform.position, to) >= this.m_epsilon) {
             var adjustedSpeed = speed * Time.deltaTime;
 
             this.transform.position = Vector3.MoveTowards(this.transform.position, to, adjustedSpeed);
 
             yield return null;
         }
+    }
+
+    private void UpdateDimensionText() {
+        this.m_dimText.text = "dim: " + m_dimNumber;
     }
 }

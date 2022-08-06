@@ -34,13 +34,13 @@ public class OverviewController : MonoBehaviour
     }
 
     public void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("OverviewTrigger")) {
+        if (other.CompareTag(GameTags.OVERVIEW_TRIGGER)) {
             this.m_insideTrigger = true;
         }
     }
 
     public void OnTriggerExit(Collider other) {
-        if (other.CompareTag("OverviewTrigger")) {
+        if (other.CompareTag(GameTags.OVERVIEW_TRIGGER)) {
             this.m_insideTrigger = false;
         }
     }
