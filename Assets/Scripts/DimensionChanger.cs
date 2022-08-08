@@ -32,8 +32,8 @@ public class DimensionChanger : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space) && this.m_state != DimChangerState.INACTIVE) {
-            int direction = m_state == DimChangerState.MINUS 
+        if (Input.GetKeyUp(KeyCode.C) && this.m_state != DimChangerState.INACTIVE) {
+            int direction = m_state == DimChangerState.MINUS
                 ? -1
                 :  1;
 
@@ -59,18 +59,21 @@ public class DimensionChanger : MonoBehaviour
     public void OnTriggerExit(Collider other) {
         if (other.CompareTag(GameTags.DIM_TRIGGER_PLUS) || other.CompareTag(GameTags.DIM_TRIGGER_MINUS)) {
             this.m_state = DimChangerState.INACTIVE;
-        } 
+        }
     }
 
     private IEnumerator MoveTo(Vector3 to, float speed) {
-        while (Vector3.Distance(this.transform.position, to) >= this.m_epsilon) {
-            var adjustedSpeed = speed * Time.deltaTime;
+        // while (Vector3.Distance(this.transform.position, to) >= this.m_epsilon) {
+        //     var adjustedSpeed = speed * Time.deltaTime;
 
-            this.transform.position = Vector3.MoveTowards(this.transform.position, to, adjustedSpeed);
+        //     this.transform.position = Vector3.MoveTowards(this.transform.position, to, adjustedSpeed);
 
-            yield return null;
-        }
-    }
+        //     yield return null;
+        // }
+        this.transform.position = to;
+
+        yield return null;
+}
 
     private void UpdateDimensionText() {
         this.m_dimText.text = "dim: " + m_dimNumber;
