@@ -63,16 +63,16 @@ public class DimensionChanger : MonoBehaviour
     }
 
     private IEnumerator MoveTo(Vector3 to, float speed) {
-        // while (Vector3.Distance(this.transform.position, to) >= this.m_epsilon) {
-        //     var adjustedSpeed = speed * Time.deltaTime;
+        while (Vector3.Distance(this.transform.position, to) >= this.m_epsilon) {
+            var adjustedSpeed = speed * Time.deltaTime;
 
-        //     this.transform.position = Vector3.MoveTowards(this.transform.position, to, adjustedSpeed);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, to, adjustedSpeed);
 
-        //     yield return null;
-        // }
-        this.transform.position = to;
+            yield return null;
+        }
+        //this.transform.position = to;
 
-        yield return null;
+        //yield return null;
 }
 
     private void UpdateDimensionText() {
