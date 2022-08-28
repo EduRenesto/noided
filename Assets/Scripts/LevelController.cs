@@ -10,6 +10,8 @@ public class LevelController : MonoBehaviour
     public int m_levelIndex;
     public int m_lastLevelIndex;
 
+    public int m_totalBlocks = 0;
+
     public float m_loadDelay = 5.0f;
 
     public GameObject m_playerObj;
@@ -18,11 +20,28 @@ public class LevelController : MonoBehaviour
 
     public bool m_debugMode = false;
 
+    private int m_completedBlocks = 0;
+
     public void Start() {
         if (m_debugMode) {
             StartCoroutine(this.RunDelayed(() => {
                 this.OnLevelCompleted();
             }, this.m_loadDelay));
+        }
+    }
+
+    public void IncrementBlock() {
+        this.m_completedBlocks++;
+
+        if (m_completedBlocks == this.m_totalBlocks) {
+            // Level complete!
+            this.OnLevelCompleted();
+        }
+    }
+
+    public void DecrementBlock() {
+        if (this.m_completedBlocks > 0) {
+            this.m_completedBlocks--;
         }
     }
 
