@@ -26,8 +26,11 @@ public class DimensionChanger : MonoBehaviour
 
     private int m_dimNumber = 0;
 
+    private OverrideZPosController m_zOverride;
+
     public void Start() {
         this.UpdateDimensionText();
+        this.m_zOverride = this.GetComponent<OverrideZPosController>();
     }
 
     public void Update()
@@ -63,6 +66,8 @@ public class DimensionChanger : MonoBehaviour
     }
 
     private IEnumerator MoveTo(Vector3 to, float speed) {
+        this.m_zOverride.SetOverride(false);
+
         while (Vector3.Distance(this.transform.position, to) >= this.m_epsilon) {
             var adjustedSpeed = speed * Time.deltaTime;
 
@@ -70,9 +75,9 @@ public class DimensionChanger : MonoBehaviour
 
             yield return null;
         }
-        //this.transform.position = to;
-
-        //yield return null;
+        
+        this.m_zOverride.ResetReference();
+        this.m_zOverride.SetOverride(true);
 }
 
     private void UpdateDimensionText() {

@@ -208,6 +208,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4549428611729446, guid: 0e74cf81e6fd82546b4797f71ceffb81, type: 3}
   m_PrefabInstance: {fileID: 1880377349}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &126586178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126586170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa951b927e9050a28af27253fd3b3646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &126586183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126586170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2bb496d3bd9b6bb589cadc669070c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_state: 0
+  m_target: {fileID: 0}
+  m_offset: {x: 0, y: 0, z: 0}
 --- !u!1 &129283189
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +725,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 825f242d03009c540a2a34cb80545293, type: 3}
+--- !u!114 &501097607 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5146796144908136461, guid: 8d8d373bca1c29a5e97c2e781b6dfd58, type: 3}
+  m_PrefabInstance: {fileID: 1839232466}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a7bdeabb9cee788bde377272c1f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &539200611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,7 +1570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1162809179
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2424,6 +2462,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5146796144908136461, guid: 8d8d373bca1c29a5e97c2e781b6dfd58, type: 3}
+      propertyPath: m_totalBlocks
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5146796144908136461, guid: 8d8d373bca1c29a5e97c2e781b6dfd58, type: 3}
       propertyPath: m_levelFinishLayer
       value: 
       objectReference: {fileID: 57286134}
@@ -2484,6 +2526,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6636192935715059565, guid: 82aab75af2a0af7289aca178ae07f499, type: 3}
+      propertyPath: m_levelController
+      value: 
+      objectReference: {fileID: 501097607}
     - target: {fileID: 8664163187160853645, guid: 82aab75af2a0af7289aca178ae07f499, type: 3}
       propertyPath: m_Name
       value: Goal01 (1)
@@ -2524,7 +2570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4549428611729446, guid: 0e74cf81e6fd82546b4797f71ceffb81, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4549428611729446, guid: 0e74cf81e6fd82546b4797f71ceffb81, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2920,7 +2966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5324224063477379017, guid: 82aab75af2a0af7289aca178ae07f499, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5324224063477379017, guid: 82aab75af2a0af7289aca178ae07f499, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2958,6 +3004,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6636192935715059565, guid: 82aab75af2a0af7289aca178ae07f499, type: 3}
+      propertyPath: m_levelController
+      value: 
+      objectReference: {fileID: 501097607}
     - target: {fileID: 8664163187160853645, guid: 82aab75af2a0af7289aca178ae07f499, type: 3}
       propertyPath: m_Name
       value: Goal01

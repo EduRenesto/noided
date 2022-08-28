@@ -8,6 +8,7 @@ TagManager:
   - DimTrigger-
   - OverviewTrigger
   - Pickup
+  - Goal
   layers:
   - Default
   - TransparentFX
