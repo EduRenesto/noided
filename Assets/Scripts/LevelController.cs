@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-using TMPro;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
@@ -21,6 +19,23 @@ public class LevelController : MonoBehaviour
     public bool m_debugMode = false;
 
     private int m_completedBlocks = 0;
+
+    private float timeLeft = 120; //secs
+    private float minutesLeft = 2;
+    private float secondsLeft = 0;
+    public Text timeDisplay;
+
+    public void Update() {
+        if (timeLeft > 0) {
+            timeLeft = timeLeft - Time.deltaTime;
+            minutesLeft = Mathf.FloorToInt(timeLeft / 60);
+            secondsLeft = Mathf.FloorToInt(timeLeft % 60);
+            timeDisplay.text = string.Format("{0:00}:{1:00}", minutesLeft, secondsLeft);
+        } else if (timeLeft < 0) {
+            this.SwitchPlayerControl(false);
+            timeDisplay.text = "Over!";
+        }
+    }
 
     public void Start() {
         if (m_debugMode) {
